@@ -20,6 +20,9 @@ public class GameController : MonoBehaviour {
 	public GUIStyle fontStyle;
 	private Vector2 fontWidth;
 
+	//WHERE IS THE BALL!
+	public GameObject theBall;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -39,7 +42,9 @@ public class GameController : MonoBehaviour {
 		Player1.transform.position = new Vector2(mainCamera.ScreenToWorldPoint (new Vector3(75f, 0f, 0f)).x, 0f);
 		Player2.transform.position = new Vector2(mainCamera.ScreenToWorldPoint (new Vector3(Screen.width - 75f, 0f, 0f)).x, 0f);
 	
+		//CHECK estimated font render width
 		fontWidth = fontStyle.CalcSize(new GUIContent("0"));
+		
 		
 	}
 
@@ -57,6 +62,13 @@ public class GameController : MonoBehaviour {
 		//Display Score
 		GUI.Label(new Rect(Screen.width/2 - 100 - fontWidth.y, 20, 100, 100), ""+player1Score, fontStyle);
 		GUI.Label(new Rect(Screen.width/2 + 100, 20, 100, 100), ""+player2Score, fontStyle);
+
+		//Reset Button
+		if(GUI.Button(new Rect(Screen.width/2 - 60,35, 121, 53),"RESET")){
+			player1Score = 0;
+			player2Score = 0;
+			theBall.SendMessage("ResetBall");
+		}
 	}
 
 	//void Update(){
