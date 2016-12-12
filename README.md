@@ -1,6 +1,6 @@
 Pong-Fu
 =======
 
-Pong Back!
+Pong is Back!
 
 Personal Project to practice Unity.
